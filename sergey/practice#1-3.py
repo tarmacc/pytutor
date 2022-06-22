@@ -4,3 +4,4 @@ for i, l in enumerate(string):#пронумирровали
         print(l.upper(), end='')
     else:
         print(l.lower(), end='')
+        
