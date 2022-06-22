@@ -10,7 +10,7 @@ for item in sorted_counts_from_numbers_and_counts:
     for key in numbers_and_counts.keys():
         if numbers_and_counts[key] == item:
             sorted_numbers_and_counts[key] = numbers_and_counts[key]  
-            # сделал словарь отсортированный по убыванию count
+            # сделал словарь отсортированный по  убыванию count
 print(sorted_numbers_and_counts)
 result = []
 for key1, val1 in sorted_numbers_and_counts.items():
