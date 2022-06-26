@@ -1,11 +1,11 @@
 def sorting(list):
      return sorted(list, key=lambda x: list.count(x), reverse=True)
-print(*sorting([2, 3, 5, 3, 7, 9, 5, 3, 7, 3, 5]))
+#print(*sorting([2, 3, 5, 3, 7, 9, 5, 3, 7, 3, 5]))
 #3 3 3 3 5 5 5 7 7 2 9
-def sorting(list):
-    return sorted(list, key=lambda x: (list.count(x), x), reverse=True)
-print(*sorting([2, 3, 5, 3, 7, 9, 5, 3, 7, 3, 5]))
-#3 3 3 3 5 5 5 7 7 9 2
+# def sorting(list):
+#     return sorted(list, key=lambda x: (list.count(x), x), reverse=True)
+# #print(*sorting([2, 3, 5, 3, 7, 9, 5, 3, 7, 3, 5]))
+# #3 3 3 3 5 5 5 7 7 9 2
 
 
 # Nikita code for education

@@ -13,4 +13,3 @@ def adjusting_to_language(text):
         empty.append(capitalize_second_letter(word))
     return ' '.join(empty)
 
-print(adjusting_to_language('aasadasd!! aa sasW'))
