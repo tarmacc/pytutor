@@ -11,4 +11,3 @@ def uplow(word):
         last_letter_small = not last_letter_small
         new_word = new_word + letter
     return new_word
-print(uplow("  Вкусно  и то чка"))
