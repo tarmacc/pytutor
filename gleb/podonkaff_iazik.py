@@ -1,18 +1,15 @@
-def letter(word):
+def capitalize_second_letter(word):
     empty = []
-    for i, j in enumerate(word):  # possible use of range func
-        if i % 2 != 0:
-            empty.append(word[i].upper())
+    for ind, j in enumerate(word):  # possible use of range func
+        if ind % 2 != 0:
+            empty.append(word[ind].upper())
         else:
-            empty.append(word[i])
-    final = ''.join(empty)
-    return final
+            empty.append(word[ind])
+    return ''.join(empty)
 
-def iazik(text):
-    new_text, l = text.lower().split(), []
-    for j in new_text:
-        l.append(letter(j))
-    result = ' '.join(l)
-    return result
+def adjusting_to_language(text):
+    new_text, empty = text.lower().split(), []
+    for word in new_text:
+        empty.append(capitalize_second_letter(word))
+    return ' '.join(empty)
 
-#print(iazik('aasadasd!! aa sasW'))
