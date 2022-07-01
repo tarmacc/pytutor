@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block kontent %}
-    <h1>Главная</h1>
-    <p>Главная страница</p>
+    <h1>Сайт-визитка</h1>
+        <style>
+            body{
+                font-style: italic;
+            }
+            a{
+                color: rgb(8, 8, 199);
+            }
+        </style>
+    <p1>Главная страница</p1>
     <p>Имя пользователя: {{ user_name }}</p>
 {% endblock %}
