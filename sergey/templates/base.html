@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 <body>
     <header>
         <a href="{{ url_for('index') }}">Главная</a>
-        <a href="/test">Тестовая</a>
+        <a href="{{ url_for('test') }}">Тестовая</a>
     </header>
     <main>
         {% block kontent %}{% endblock %}
