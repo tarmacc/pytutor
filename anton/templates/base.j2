@@ -1,31 +1,42 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сайт-визитка</title>
-  <style>
-    body {
-      font: 18px/1.3 Arial, sans-serif;
-    }
-    a {
-      font-size: 24px;
-      text-decoration: none;
-      color: green;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <a href="{{ url_for('index') }}">Главная</a>
-    <a href="{{ url_for('test') }}">Тестовая</a>
-  </header>
-  <main>
-    {% block content %}{% endblock%}
-  </main>
-</body>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Фрактал by JokerTeam</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"></noscript>
+  </head>
+  <body class="is-preload">
+    <header id="header">
+      <div class="content">
+        <h1><a href="#">Фрактал</a></h1>
+        <p>Just a simple, single page responsive<br />
+        template brought to you by <a href="http://html5up.net">HTML5 UP</a></p>
+        <ul class="actions">
+          <li><a href="#" class="button primary icon solid fa-download">Download</a></li>
+          <li><a href="#one" class="button icon solid fa-chevron-down scrolly">Learn More</a></li>
+        </ul>
+      </div>
+      <div class="image phone"><div class="inner"><img src="{{ url_for('static', filename='images/screen.jpg') }}" alt="" /></div></div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+      </ul>
+      <p class="copyright">&copy; Untitled. Credits: <a href="http://html5up.net">HTML5 UP</a></p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
 </html>
