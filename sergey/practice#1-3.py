@@ -1,8 +1,7 @@
 string = 'жаргон падонкаф'
-string1 = ''
-for s in string:
-    if s.isupper():
-        string1 += s.lower()
+for i, l in enumerate(string):#пронумировали
+    if i%2:#четные нечетныеgit 
+        print(l.upper(), end='')
     else:
-        string1 += s.upper()
-print(string1)
+        print(l.lower(), end='')
+        
