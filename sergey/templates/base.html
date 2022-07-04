@@ -1,31 +1,107 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Начало пути, сайт визитка</title>
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Present one</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/nonscript.css') }}"/></noscript>
     <style>
-        body{
-            font: 18px/1.3 Arial, Times
-        }
-        a{
-            font-size: 24px;
-            font-style: italic;
-            text-decoration: none;
-            color: rgb(55, 0, 255);
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+      .rounded-img{
+        width: 35%;
+        border-radius: 50%;
+      }
     </style>
-</head>
-<body>
-    <header>
-        <a href="{{ url_for('index') }}">Главная</a>
-        <a href="{{ url_for('test') }}">Тестовая</a>
-    </header>
-    <main>
-        {% block kontent %}{% endblock %}
-</body>
+  </head>
+  <body class="is-preload">
+      <div id="page-wrapper">
+
+          <header id="header" class="alt">
+            <h1><a href="index.html">Present one</a></h1>
+            <nav>
+              <a href="#menu">Меню</a>
+            </nav>
+          </header>
+
+          <nav id="menu">
+            <div class="inner">
+              <h2>Menu</h2>
+              <ul class="links">
+                <li><a href="{{ url_for('index') }}">Главная</a></li>
+                <li><a href="{{ url_for('work') }}">Работа</a></li>
+                <li><a href="{{ url_for('study') }}">Учеба</a></li>
+                <li><a href="{{ url_for('life') }}">It's my life</a></li>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Sign Up</a></li>
+              </ul>
+              <a href="#" class="close">Close</a>
+            </div>
+          </nav>
+
+          <section id="banner">
+            <div class="inner">
+              <span><img class="rounded-img" src="{{ url_for('static', filename='images/img.jpg') }}" style="margin-right: 100px;"/></span>
+                <div class="logo">
+                </div>
+                <h2>Серёга - комментатор от Бога!</h2>
+                <p>коротко о себе</a></p>
+                <button>Like!</button>
+
+              </div>
+            </div>
+          </section>
+
+{% block content %}{% endblock %}
+
+
+
+          <section id="footer">
+            <div class="inner">
+              <h2 class="major">За жили-были</h2>
+              <p>вопрос/ответ</p>
+              <form method="post" action="#">
+                <div class="fields">
+                  <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" />
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" />
+                  </div>
+                  <div class="field">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="4"></textarea>
+                  </div>
+                </div>
+                <ul class="actions">
+                  <li><input type="submit" value="Send Message" /></li>
+                </ul>
+              </form>
+              <ul class="contact">
+                <li class="icon solid fa-home">
+                  St.Petesburg<br />
+                  Secret<br />
+                  Rus                </li>
+                <li class="icon solid fa-phone">(912) 155-8668</li>
+                <li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+                <li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
+                <li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+              </ul>
+              <ul class="copyright">
+                <li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </section>
+
+      </div>
+      <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+  </body>
 </html>
