@@ -1,31 +1,93 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт визитка</title>
-    <style>
-      body {
-        font: 18px/1.3 Arial, sans-serif;
-     }
-     a {
-      font-size: 24px;
-      text-decoration: none;
-      color: darkcyan;
-     }
-     a:hover {
-      text-decoration: underline;
-     }
-    </style>
-</head>
-<body>
-    <header>
-      <a href="{{ url_for('index') }}">Главная</a>
-      <a href="{{ url_for('test') }}">Тестовая</a>
-    </header>
-    <main>
-      {% block content %}{% endblock %}
-    </main>
-</body>
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Сайт-визитка</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"></noscript>
+  </head>
+  <body class="is-preload">
+
+    <!-- Page Wrapper -->
+      <div id="page-wrapper">
+
+        <!-- Header -->
+  <header id="header" class="alt">
+    <h1><a href="index.html">Главная страница</a></h1>
+    <nav>
+      <a href="#menu">Меню</a>
+    </nav>
+  </header>
+        <!-- Menu -->
+        <nav id="menu">
+          <div class="inner">
+            <h2>Menu</h2>
+            <ul class="links">
+              <li><a href="{{ url_for('index') }}">Главная</a></li>
+              <li><a href="generic.html">Generic</a></li>
+              <li><a href="elements.html">Elements</a></li>
+              <li><a href="#">Log In</a></li>
+              <li><a href="#">Sign Up</a></li>
+            </ul>
+            <a href="#" class="close">Close</a>
+          </div>
+        </nav>
+
+  {% block content %}{% endblock %}
+
+        <!-- Footer -->
+  <section id="footer">
+    <div class="inner">
+      <h2 class="major">Get in touch</h2>
+      <p>.</p>
+      <form method="post" action="#">
+        <div class="fields">
+          <div class="field">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+          </div>
+          <div class="field">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" />
+          </div>
+          <div class="field">
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="4"></textarea>
+          </div>
+        </div>
+        <ul class="actions">
+          <li><input type="submit" value="Send Message" /></li>
+        </ul>
+      </form>
+      <ul class="contact">
+        <li class="icon solid fa-home">
+          Untitled Inc<br />
+          1234 Somewhere Road Suite #2894<br />
+          Nashville, TN 00000-0000
+        </li>
+        <li class="icon solid fa-phone">(000) 000-0000</li>
+        <li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+        <li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
+        <li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
+        <li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
+    </div>
+  </section>
+
+      </div>
+
+    <!-- Scripts -->
+      <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+  </body>
 </html>

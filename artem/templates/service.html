@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+              <!-- Banner -->
+        <section id="banner">
+          <div class="inner">
+            <h1>{{ service_name }}</h1>
+          </div>
+        </section>
+
+              <!-- Wrapper -->
+        <section id="wrapper">
+
+        {% if service_name == 'ortopediya-dlya-vzroslyh' %}
+          <h1>Ортопедия для взрослых</h1>
+
+
+        {% elif service_name == 'podologiya' %}
+          <h1>Подология</h1>
+        {% endif %}
+
+
+
+
+        </section>
+{% endblock %}
