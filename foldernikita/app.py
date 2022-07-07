@@ -9,3 +9,8 @@ def index():
 @app.route('/test')
 def test():
     return render_template("test.j2")
+
+
+@app.route('/elements')
+def elements():
+    return render_template("elements.j2")
