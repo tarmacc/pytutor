@@ -17,13 +17,8 @@ form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
-section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;}
+section, summary, time, mark, audio, video
+
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -74,10 +69,6 @@ input, select, textarea {
 
 /* Basic */
 
-	@-ms-viewport {
-		width: device-width;
-	}
-
 	body {
 		-ms-overflow-style: scrollbar;
 	}
@@ -119,6 +110,7 @@ input, select, textarea {
 			-ms-transition: none !important;
 			transition: none !important;
 		}
+
 
 /* Type */
 
@@ -252,7 +244,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
-		font-family: Raleway, Helvetica, sans-serif;
+		font-family: bookman old style;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		margin: 0 0 1em 0;
@@ -3384,6 +3376,7 @@ input, select, textarea {
 		#banner .inner {
 			margin: 0 auto;
 			width: 55em;
+      padding-left: 40px;
 		}
 
 		#banner .logo {
