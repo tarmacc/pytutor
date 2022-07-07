@@ -12,9 +12,9 @@
     <!-- Page Wrapper -->
       <div id="page-wrapper">
 
-        <!-- Header -->
+     <!-- Header -->
           <header id="header" class="alt">
-            <h1><a href="index.j2">Solid State</a></h1>
+            <h1><a href="index.html">Solid State</a></h1>
             <nav>
               <a href="#menu">Menu</a>
             </nav>
@@ -25,9 +25,9 @@
             <div class="inner">
               <h2>Menu</h2>
               <ul class="links">
-                <li><a href=" {{ url_for('index') }}">Index</a></li>
-                <li><a href=" {{ url_for('test') }}">Test</a></li>
-                <li><a href=" {{ url_for('elements') }}">Elements</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('test') }}">Generic</a></li>
+                <li><a href="{{ url_for('elements') }}">Elements</a></li>
                 <li><a href="#">Log In</a></li>
                 <li><a href="#">Sign Up</a></li>
               </ul>
@@ -93,7 +93,7 @@
     <!-- Scripts -->
       <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
       <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/rowser.min.js') }}"></script>
       <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
       <script src="{{ url_for('static', filename='js/util.js') }}"></script>
       <script src="{{ url_for('static', filename='js/main.js') }}"></script>
