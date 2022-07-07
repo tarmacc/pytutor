@@ -17,3 +17,13 @@ while node is not None:#если обработаны все узлы цикл w
         parents[n] = node#этот узел становится новым родителем для соседа
 processed.append(node)#узел помечается как обработанный
 node = find_lowest_cost_node(costs)#найти следующий узел для обработки и повторить цикл
+
+def index_lowest_cost_node(costs):  # costs - затраты
+    lowest_cost = loat ('inf')
+    lowest_cost node = None
+    for node in costs:  # перебираем все узлы
+        cost = costs[node]
+        if cost < lowest_cost and node not in processed:  #Если это узел с наименьшей стоимостью из уже виденных и он еще не бып обработан...
+           lowest_cost_node = node  # ...он назначается новым узлом с наименьшей стоимостью
+    return lowest_cost_node
+          
