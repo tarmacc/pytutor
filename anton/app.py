@@ -1,20 +1,38 @@
-from flask import Flask, render_template
+import os
+
+from flask import Flask, render_template, redirect, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "you-will-nejy$#gi#$s123"
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'app.db')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-@app.route("/")
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+
 from forms import DemoForm
+from models import UserSubmit
+
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-    user_name = "123"
-    return render_template("index.j2", user_name=user_name)
+    """Показ главной страницы."""
+    page_title = "Главная"
+
+    return render_template("index.j2", page_title=page_title)
 
 
-@app.route('/test')
+@app.route("/test")
 def test():
-    return render_template("test.j2")
+    """Показ тестовой страницы."""
+    page_title = "Тестовая страница"
+    return render_template("test.j2", page_title=page_title)
 
 
 @app.route("/users")
