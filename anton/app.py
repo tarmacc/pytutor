@@ -15,6 +15,21 @@ def index():
 @app.route('/test')
 def test():
     return render_template("test.j2")
+
+
+@app.route("/users")
+def users():
+    page_title = "Список пользователей, кто заполнил форму"
+    user_list_db = UserSubmit.query.all()
+    return render_template("users.j2", page_title=page_title, users=user_list_db)
+
+
+@app.route("/thanks")
+def thanks():
+    page_title = "Спасибо за заполнение формы!"
+    return render_template("thanks.j2", page_title=page_title)
+
+
 @app.route("/form", methods=["GET", "POST"])
 def demo_form():
     page_title = "Демо-форма"
