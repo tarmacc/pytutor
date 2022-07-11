@@ -3,6 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
+from forms import DemoForm
 def index():
     user_name = "123"
     return render_template("index.j2", user_name=user_name)
@@ -11,3 +12,21 @@ def index():
 @app.route('/test')
 def test():
     return render_template("test.j2")
+@app.route("/form", methods=["GET", "POST"])
+def demo_form():
+    page_title = "Демо-форма"
+    form = DemoForm()
+    if form.validate_on_submit():
+        print(f"Имя кто заполнил: {request.form.get('name')}, \nEmail: {request.form.get('email')}")
+        user_db = UserSubmit(
+            name=f"{request.form.get('name')} {request.form.get('last_name')}",
+            email=request.form.get('email')
+        )
+        db.session.add(user_db)
+        db.session.commit()
+
+        user_list_db = UserSubmit.query.all()
+        for user in user_list_db:
+            print(user.id, user.name, user.email)
+        return redirect("thanks")
+    return render_template("test-form.j2", page_title=page_title, form=form)
