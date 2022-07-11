@@ -1,21 +1,6 @@
-import os
+from flask import render_template, redirect, request
 
-from flask import Flask, render_template, redirect, request
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "you-will-nejy$#gi#$s123"
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'app.db')
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-
+from init import app, db
 from forms import DemoForm
 from models import UserSubmit
 
@@ -37,6 +22,7 @@ def test():
 
 @app.route("/users")
 def users():
+    """Вывод списка пользователей."""
     page_title = "Список пользователей, кто заполнил форму"
     user_list_db = UserSubmit.query.all()
     return render_template("users.j2", page_title=page_title, users=user_list_db)
@@ -44,12 +30,14 @@ def users():
 
 @app.route("/thanks")
 def thanks():
+    """При успешной отправке формы."""
     page_title = "Спасибо за заполнение формы!"
     return render_template("thanks.j2", page_title=page_title)
 
 
 @app.route("/form", methods=["GET", "POST"])
 def demo_form():
+    """Форма для отправки и сохранение в БД."""
     page_title = "Демо-форма"
     form = DemoForm()
     if form.validate_on_submit():
