@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "you-will-nejy$#gi#$s123"
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'app.db')
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 @app.route("/")
 from forms import DemoForm
