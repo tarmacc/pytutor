@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Email
-
-class DemoForm(FlaskForm):
+"""Форма обратной связи"""
+class Feedback(FlaskForm):
     """Класс демо формы."""
     name = StringField('Имя')
     email = EmailField(

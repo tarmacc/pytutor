@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, url_for
 """из фласка импортируем класс(Flask), подключаем (рендрим) шаблоны из фласка."""
-from forms import DemoForm
+from forms import Feedback
 from init import app, db
 from models import UserSubmit
 
@@ -11,7 +11,7 @@ def index():
     """В шаблоне base через url_for передал функции (index)"""
     user_name = 'Sergey'
     """Передаем в render_template -> передается из контрролера в шаблон index.html."""
-    form = DemoForm(request.form)
+    form = Feedback(request.form)
     if form.validate_on_submit():
         """print(f"Имя кто заполнил: {request.form.get('name')}, \nEmail: {request.form.get('email')}")"""
         user_db = UserSubmit(
