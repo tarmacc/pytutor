@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired
 
 
 class DemoForm(FlaskForm):
+    """Класс демо-формы."""
     name = StringField('Имя')
     email = EmailField(
         'Email', validators = [DataRequired('Email обязательно для заполнения')]
