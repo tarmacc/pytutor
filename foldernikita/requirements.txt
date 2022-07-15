@@ -3,3 +3,6 @@ flask
 flask-wtf
 flask-sqlalchemy
 flask-migrate
+flask-security-too
+python-dotenv
+python-slugify
