@@ -4,15 +4,19 @@ from flask_security import current_user, login_required
 from init import app
 from extensions import db
 from form import ContactForm
-from models import UserSubmit
+from models import UserSubmit, User
+
 
 
 @app.before_first_request
 def init():
+    """Создание таблиц"""
     db.create_all()
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
+    """Главная страница"""
+    page_title = "Главная страница"
     form = ContactForm()
     if form.validate_on_submit():
         print(f"Name: {request.form.get('name')}, \nEmail: {request.form.get('email')}, \nMessage: {request.form.get('message')}")
@@ -30,7 +34,6 @@ def index():
     return render_template("index.j2", form=form)
 
 
-
 @app.route('/test')
 def test():
     return render_template("test.j2")
@@ -42,6 +45,16 @@ def elements():
 
 
 @app.route('/users')
+@login_required
 def users():
+    """Список пользователей"""
+    page_title = "Список пользователей"
     user_list_db = UserSubmit.query.all()
-    return render_template("users.j2", users=user_list_db)
+    return render_template("users.j2", users=User.query.all())
+
+@app.get('/lk')
+@login_required
+def lk():
+    """Личный кабинет"""
+    page_title = "Личный кабинет"
+    return render_template("lk.j2", email = current_user.email)
