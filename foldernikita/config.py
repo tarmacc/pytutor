@@ -18,7 +18,7 @@ class BaseConfig:
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
     SECURITY_CHANGEABLE = True
-    SECURITY_CONFIRMABLE = True
+    SECURITY_CONFIRMABLE = False
     SECURITY_REGISTERABLE = True
     SECURITY_RECOVERABLE = True
     SECURITY_TRACKABLE = True
@@ -80,3 +80,4 @@ config = {
     "development": DevelopmentConfig,
     "testing": TestingConfig,
     "production": ProductionConfig,
+}
