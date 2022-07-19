@@ -1,5 +1,5 @@
 import os
-from trace import Trace
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -8,7 +8,12 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig:
-    MAIL_ADMINS = ["admin@makehtml.ru"]
+    APP_NAME = "Фрактал"
+
+    BABEL_DEFAULT_LOCALE = "ru"
+    LANGUAGES = ["en", "ru"]
+
+    MAIL_ADMINS = ["info@jokerinteractive.ru"]
 
     MAIL_SERVER = os.getenv("MAIL_SERVER")
     MAIL_PORT = int(os.getenv("MAIL_PORT", 465))
@@ -18,7 +23,7 @@ class BaseConfig:
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
     SECURITY_CHANGEABLE = True
-    SECURITY_CONFIRMABLE = False
+    SECURITY_CONFIRMABLE = True
     SECURITY_REGISTERABLE = True
     SECURITY_RECOVERABLE = True
     SECURITY_TRACKABLE = True
@@ -53,7 +58,7 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     DEV_SECRET_KEY = "y5gD_xpd+f6ahaF#o&*VCC)V&Adm2qt&"
     SECRET_KEY = os.getenv("SECRET_KEY", DEV_SECRET_KEY)
-    SQLALCHEMY_DATABASE_URI=f"sqlite:///{os.path.join(basedir, 'app.db')}",
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(basedir, 'app.db')}"
 
 
 class TestingConfig(DevelopmentConfig):
@@ -69,12 +74,15 @@ class ProductionConfig(BaseConfig):
     DB_PORT = os.getenv("DB_PORT", "3306")
     DB_NAME = os.getenv("DB_NAME")
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-    SQLALCHEMY_DATABASE_URI = f"{DB_DRIVER}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    SQLALCHEMY_DATABASE_URI = (
+        f"{DB_DRIVER}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    )
     SQLALCHEMY_ENGINE_OPTIONS = {
         "pool_size": 10,
         "pool_recycle": 3600,
         "pool_pre_ping": True,
     }
+
 
 config = {
     "development": DevelopmentConfig,
