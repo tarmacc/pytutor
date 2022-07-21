@@ -5,6 +5,7 @@ from init import app
 from extensions import db
 from form import ContactForm
 from models import UserSubmit, User
+from mail import send_email
 
 
 
@@ -32,6 +33,13 @@ def index():
             print(user.id, user.name, user.email, user.message)
         return redirect(url_for('index'))
     return render_template("index.j2", form=form)
+
+
+@app.route("/mail", methods=["GET", "POST"])
+def test_mail():
+    page_title = "Главная"
+    send_email("Тестовое письмо")
+    return render_template("index.j2", page_title=page_title)
 
 
 @app.route('/test')

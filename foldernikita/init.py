@@ -4,6 +4,7 @@ from flask import Flask
 
 from config import config
 from extensions import babel, mail, db, migrate, security, executor
+from mail import SecMailUtil
 from models import user_datastore
 
 
@@ -20,4 +21,4 @@ executor.init_app(app)
 db.init_app(app)
 migrate.init_app(app, db)
 # app, user_datastore, mail_util_cls=SecMailUtil
-security.init_app(app, user_datastore)
+security.init_app(app, user_datastore, mail_util_cls=SecMailUtil)
