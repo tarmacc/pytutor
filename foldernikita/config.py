@@ -10,7 +10,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 class BaseConfig:
     APP_NAME = "Solid by tarmacc"
 
-    MAIL_ADMINS = ["lobachnkt1@yandex.ru"]
+    MAIL_ADMINS = ["lobachnkt@gmail.com"]
     MAIL_SERVER = os.getenv("MAIL_SERVER")
     MAIL_PORT = int(os.getenv("MAIL_PORT", 465))
     MAIL_USE_SSL = os.getenv("MAIL_USE_SSL", False)

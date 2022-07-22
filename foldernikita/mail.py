@@ -59,7 +59,7 @@ def send_email(subject=None, **kwargs):
     recipients = current_app.config["MAIL_ADMINS"]
     body = None
     html = render_template("email/message.j2", time=time, **kwargs)
-    current_app.logger.info(f"Отправляем письмо для {recipient} пользователем {user}")
+    current_app.logger.info(f"Отправляем письмо админам")
     executor.add_default_done_callback(sendmail_callback)
     executor.submit(send_async_email, subject, recipients, sender, body, html)
 

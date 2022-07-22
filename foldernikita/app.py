@@ -39,7 +39,7 @@ def index():
 def test_mail():
     page_title = "Главная"
     send_email("Тестовое письмо")
-    return render_template("index.j2", page_title=page_title)
+    return render_template("test.j2", page_title=page_title)
 
 
 @app.route('/test')
