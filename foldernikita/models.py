@@ -5,6 +5,15 @@ from sqlalchemy.sql import func
 from flask_security import RoleMixin, SQLAlchemyUserDatastore, UserMixin
 
 
+class Contacts(db.Model):
+    """Таблица с контактами сайта"""
+    id = db.Column(db.Integer, primary_key=True)
+    adress = db.Column(db.String(64), index=True)
+    phone = db.Column(db.String(64), index=True)
+    telegram = db.Column(db.String(64), index=True)
+    instagram = db.Column(db.String(64), index=True)
+
+
 class UserSubmit(db.Model):
     """Таблица заявок с формы обратной связи."""
     id = db.Column(db.Integer, primary_key=True)

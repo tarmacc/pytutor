@@ -12,5 +12,12 @@ class ContactForm(FlaskForm):
             Email("Email введен неправильно")
         ]
     )
-    message = TextAreaField("Message", validators=[DataRequired("Заполните поле")])
+    message = TextAreaField("Сообщение", validators=[DataRequired("Заполните поле")])
     submit = SubmitField("Отправить")
+
+class Contacts(FlaskForm):
+    adress = StringField("Адрес", validators=[DataRequired("Заполните поле")])
+    phone = StringField("Телефон", validators=[DataRequired("Заполните поле")])
+    telegram = StringField("Телеграм", validators=[DataRequired("Заполните поле")])
+    instagram = StringField("Инстаграм", validators=[DataRequired("Заполните поле")])
+    submit = SubmitField("Заменить данные на сайте")

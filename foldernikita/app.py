@@ -3,7 +3,7 @@ from flask_security import current_user, login_required
 
 from init import app
 from extensions import db
-from form import ContactForm
+from form import ContactForm,Contacts
 from models import UserSubmit, User
 from mail import send_email
 
@@ -60,9 +60,20 @@ def users():
     user_list_db = UserSubmit.query.all()
     return render_template("users.j2", users=User.query.all())
 
-@app.get('/lk')
+@app.route('/lk', methods=["GET", "POST"])
 @login_required
 def lk():
     """Личный кабинет"""
     page_title = "Личный кабинет"
-    return render_template("lk.j2", email = current_user.email)
+    form = Contacts()
+    if form.validate_on_submit():
+        contacts_db = Contacts(
+            adress = request.form.get('adress'),
+            phone = request.form.get('phone'),
+            telegram = request.form.get('telegram'),
+            instagram = request.form.get('instagram')
+        )
+        db.session.add(contacts_db)
+        db.session.commit()
+        return redirect(url_for('lk'))
+    return render_template("lk.j2", email = current_user.email, form=form)

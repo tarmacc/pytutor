@@ -8,6 +8,46 @@
                  Личный кабинет: {{email}}
               </ul>
             </div>
+            <div class="inner">
+              <h2 class="major">Форма</h2>
+              <p> Редактирование контактных данных компании</p>
+              <form method="post" action=" {{ url_for('lk') }}" novalidate>
+              {{ form.hidden_tag() }}
+                <div class="fields">
+                  <div class="field">
+                    {{ form.adress.label }}
+                    {{ form.adress(size=28, placeholder=form.adress.label.text) }}
+                    {% for error in form.adress.errors %}
+                      <span style="color: red;"> {{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="field">
+                    {{ form.phone.label }}
+                    {{ form.phone(size=28, placeholder=form.phone.label.text) }}
+                    {% for error in form.phone.errors %}
+                      <span style="color: red;"> {{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="field">
+                    {{ form.telegram.label }}
+                    {{ form.telegram(size=28, placeholder=form.telegram.label.text) }}
+                    {% for error in form.telegram.errors %}
+                      <span style="color: red;"> {{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="field">
+                    {{ form.instagram.label }}
+                    {{ form.instagram(size=28, placeholder=form.instagram.label.text) }}
+                    {% for error in form.instagram.errors %}
+                      <span style="color: red;"> {{error}}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <ul class="actions">
+                  <li>{{ form.submit() }}</li>
+                </ul>
+              </form>
+              </div>
           </section>
 
 {% endblock %}
