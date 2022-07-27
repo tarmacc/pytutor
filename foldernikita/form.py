@@ -15,7 +15,7 @@ class ContactForm(FlaskForm):
     message = TextAreaField("Сообщение", validators=[DataRequired("Заполните поле")])
     submit = SubmitField("Отправить")
 
-class Contacts(FlaskForm):
+class ContactsForm(FlaskForm):
     adress = StringField("Адрес", validators=[DataRequired("Заполните поле")])
     phone = StringField("Телефон", validators=[DataRequired("Заполните поле")])
     telegram = StringField("Телеграм", validators=[DataRequired("Заполните поле")])
