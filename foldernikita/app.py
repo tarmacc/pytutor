@@ -32,7 +32,7 @@ def index():
         for user in user_list_db:
             print(user.id, user.name, user.email, user.message)
         return redirect(url_for('index'))
-    return render_template("index.j2", form=form, company_contacts=Contacts.query.get(6))
+    return render_template("index.j2", form=form, company_contacts=Contacts.query.first())
 
 
 @app.route('/lk', methods=["GET", "POST"])
@@ -48,13 +48,15 @@ def lk():
             telegram = request.form.get('telegram'),
             instagram = request.form.get('instagram')
         )
+        db.session.query(Contacts).delete(synchronize_session='fetch')
+        """Удаление старых контактных данных фирмы"""
         db.session.add(contacts_db)
         db.session.commit()
         user_list_db = Contacts.query.all()
         for user in user_list_db:
             print(user.id, user.adress, user.phone, user.telegram, user.instagram)
         return redirect(url_for('lk'))
-    return render_template("lk.j2", email = current_user.email, form=form)
+    return render_template("lk.j2", email = current_user.email, form=form, company_contacts=Contacts.query.first())
 
 
 @app.route("/mail", methods=["GET", "POST"])

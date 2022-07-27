@@ -2,15 +2,23 @@
 {% block content %}
 
         <!-- Wrapper -->
-          <section id="wrapper">
-           <div class="inner">
-              <ul>
-                 Личный кабинет: {{email}}
+          <section id="wrapper" style="margin-left:5%;margin-right:5%">
+            <div class="inner">
+              <p>Личный кабинет: {{email}}</p>
+            </div>
+            <div class="inner">
+             <p> Контактные данные компании:</p>
+              <ul class="contact">
+                <li class="icon solid fa-home">
+                  {{company_contacts.adress}}
+                </li>
+                <li class="icon solid fa-phone">{{company_contacts.phone}}</li>
+                <li class="icon brands fa-facebook-f"><a href="#">{{company_contacts.telegram}}</a></li>
+                <li class="icon brands fa-instagram"><a href="#">{{company_contacts.instagram}}</a></li>
               </ul>
             </div>
             <div class="inner">
-              <h2 class="major">Форма</h2>
-              <p> Редактирование контактных данных компании</p>
+              <p> Редактирование контактных данных компании:</p>
               <form method="post" action=" {{ url_for('lk') }}" novalidate>
               {{ form.hidden_tag() }}
                 <div class="fields">
@@ -47,7 +55,7 @@
                   <li>{{ form.submit() }}</li>
                 </ul>
               </form>
-              </div>
+            </div>
           </section>
 
 {% endblock %}
