@@ -3,8 +3,8 @@ from flask_security import current_user, login_required
 
 from init import app
 from extensions import db
-from form import ContactForm,ContactsForm
-from models import UserSubmit, User, Contacts
+from form import ContactForm, ContactsForm, RatingForm
+from models import UserSubmit, User, Contacts, Ratings
 from mail import send_email
 
 
@@ -18,6 +18,18 @@ def init():
 def index():
     """Главная страница"""
     page_title = "Главная страница"
+    rating_form = RatingForm()
+    if rating_form.validate_on_submit():
+        website_rating_db = Ratings(
+            rating = request.form.get('rating'),
+            comments = request.form.get('comments')
+        )
+        db.session.add(website_rating_db)
+        db.session.commit()
+        rating_list_db = Ratings.query.all()
+        for ratings in rating_list_db:
+            print(ratings.id, ratings.rating, ratings.comments)
+        return redirect(url_for('index'))
     form = ContactForm()
     if form.validate_on_submit():
         print(f"Name: {request.form.get('name')}, \nEmail: {request.form.get('email')}, \nMessage: {request.form.get('message')}")
@@ -32,7 +44,7 @@ def index():
         for user in user_list_db:
             print(user.id, user.name, user.email, user.message)
         return redirect(url_for('index'))
-    return render_template("index.j2", form=form, company_contacts=Contacts.query.first())
+    return render_template("index.j2", form=form, rating_form=rating_form, company_contacts=Contacts.query.first())
 
 
 @app.route('/lk', methods=["GET", "POST"])

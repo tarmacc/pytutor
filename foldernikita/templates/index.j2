@@ -117,6 +117,32 @@
               </form>
             </div>
             <div class="inner">
+              <h2 class="major">Оценка качества сайта</h2>
+              <p> Команда ООО ИМЯ будет очень благодарна, если вы оцените наш сайт от 1 до 5</p>
+              <form method="post" action=" {{ url_for('index') }}" novalidate>
+              {{ rating_form.hidden_tag() }}
+                <div class="fields">
+                  <div class="field">
+                    {{ rating_form.rating.label }}
+                    {{ rating_form.rating}}
+                    {% for error in rating_form.rating.errors %}
+                      <span style="color: red;"> {{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="field">
+                    {{ rating_form.comments.label }}
+                    {{ rating_form.comments(size=25, placeholder=rating_form.comments.label.text) }}
+                    {% for error in rating_form.comments.errors %}
+                      <span style="color: red;"> {{error}}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <ul class="actions">
+                  <li>{{ rating_form.submit() }}</li>
+                </ul>
+              </form>
+            </div>
+            <div class="inner">
               <ul class="contact">
                 <li class="icon solid fa-home">
                   {{company_contacts.adress}}

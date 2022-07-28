@@ -13,6 +13,11 @@ class Contacts(db.Model):
     telegram = db.Column(db.String(64), index=True)
     instagram = db.Column(db.String(64), index=True)
 
+class Ratings(db.Model):
+    """Таблица с оценками сайта"""
+    id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.String(64), index=True)
+    comments = db.Column(db.String(64), index=True)
 
 class UserSubmit(db.Model):
     """Таблица заявок с формы обратной связи."""

@@ -1,6 +1,6 @@
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, SubmitField, TextAreaField
+from wtforms import StringField, EmailField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Email
 
 
@@ -21,3 +21,11 @@ class ContactsForm(FlaskForm):
     telegram = StringField("Телеграм", validators=[DataRequired("Заполните поле")])
     instagram = StringField("Инстаграм", validators=[DataRequired("Заполните поле")])
     submit = SubmitField("Заменить данные на сайте")
+
+class RatingForm(FlaskForm):
+    rating = SelectField("Ваша оценка",
+        validators=[DataRequired()],
+        choices=[("1"),("2"),("2")]
+    )
+    comments= StringField("Ваши замечания")
+    submit = SubmitField("Оставить оценку")
