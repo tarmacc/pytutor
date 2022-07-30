@@ -25,7 +25,7 @@ class ContactsForm(FlaskForm):
 class RatingForm(FlaskForm):
     rating = SelectField("Ваша оценка",
         validators=[DataRequired()],
-        choices=[("1"),("2"),("2")]
+        choices=[("1"),("2"),("3"),("4"),("5")]
     )
     comments= StringField("Ваши замечания")
     submit = SubmitField("Оставить оценку")

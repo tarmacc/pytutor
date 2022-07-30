@@ -118,7 +118,9 @@
             </div>
             <div class="inner">
               <h2 class="major">Оценка качества сайта</h2>
-              <p> Команда ООО ИМЯ будет очень благодарна, если вы оцените наш сайт от 1 до 5</p>
+              <p> Команда ООО ИМЯ будет очень благодарна, если вы оцените наш сайт от 1 до 5.
+              <br>Средняя оценка пользователями нашего сайта: {{rating}}
+              </p>
               <form method="post" action=" {{ url_for('index') }}" novalidate>
               {{ rating_form.hidden_tag() }}
                 <div class="fields">
@@ -143,6 +145,7 @@
               </form>
             </div>
             <div class="inner">
+            <h2 class="major">Контактные данные</h2>
               <ul class="contact">
                 <li class="icon solid fa-home">
                   {{company_contacts.adress}}

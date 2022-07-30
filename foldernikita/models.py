@@ -16,7 +16,7 @@ class Contacts(db.Model):
 class Ratings(db.Model):
     """Таблица с оценками сайта"""
     id = db.Column(db.Integer, primary_key=True)
-    rating = db.Column(db.String(64), index=True)
+    rating = db.Column(db.Integer, index=True)
     comments = db.Column(db.String(64), index=True)
 
 class UserSubmit(db.Model):

@@ -26,10 +26,15 @@ def index():
         )
         db.session.add(website_rating_db)
         db.session.commit()
-        rating_list_db = Ratings.query.all()
-        for ratings in rating_list_db:
-            print(ratings.id, ratings.rating, ratings.comments)
         return redirect(url_for('index'))
+    rating_list_db = Ratings.query.all()
+    sum_rat = 0
+    num_lines = 0
+    for ratings in rating_list_db:
+        sum_rat += ratings.rating
+        num_lines += 1
+    rating_final = sum_rat / num_lines
+
     form = ContactForm()
     if form.validate_on_submit():
         print(f"Name: {request.form.get('name')}, \nEmail: {request.form.get('email')}, \nMessage: {request.form.get('message')}")
@@ -44,7 +49,7 @@ def index():
         for user in user_list_db:
             print(user.id, user.name, user.email, user.message)
         return redirect(url_for('index'))
-    return render_template("index.j2", form=form, rating_form=rating_form, company_contacts=Contacts.query.first())
+    return render_template("index.j2", form=form, rating=rating_final, rating_form=rating_form, company_contacts=Contacts.query.first())
 
 
 @app.route('/lk', methods=["GET", "POST"])
